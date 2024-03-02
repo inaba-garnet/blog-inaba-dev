@@ -1,0 +1,61 @@
+---
+const { frontmatter } = Astro.props
+
+import Layout from '../layouts/Layout.astro';
+import ContentHero from '../components/content/Hero.astro';
+---
+
+<Layout title={frontmatter.title}>
+
+<div class="lg:max-w-4xl
+            bg-white
+            shadow-sm
+            rounded
+            lg:p-8
+            p-4"
+>
+    <ContentHero 
+        title="aaaaaa"
+        imgSrc='/img/83603397_p0.png'
+    />
+
+    <div class="prose-header mt-4 mb-12">
+        <h1 class="text-3xl font-semibold mt-2">{frontmatter.title}</h1>
+        <div class="flex items-stretch mt-2">
+            <p class="before:i-ri-history-line before:relative before:top-0.5 before:mr-1 
+                    text-slate-600 mr-2">{frontmatter.updated_at}</p>
+            <p class="before:i-ri-edit-line before:relative before:top-0.5 before:mr-1 
+                    text-slate-600">{frontmatter.created_at}</p>
+        </div>
+    </div>
+
+    <article class="prose prose-gray lg:prose-lg max-w-none mt-8">
+        <slot />
+    </article>
+</div>
+
+<style>
+    .prose h2 {
+        @apply border-b border-slate-300 mb-5 pb-1
+    }
+    .prose h3 {
+        @apply border-l-4 border-accent mb-3 pl-3
+    }
+    
+    .prose a {
+        @apply text-accent
+    }
+
+    .prose ul > li {
+        @apply before:i-mingcute-snow-line before:mr-1 my-0.5 before:relative before:top-0.5 before:text-primary list-none 
+    }
+
+    .prose ul > li > ul {
+        @apply my-2
+    }
+
+    .prose ul > li > ul > li{
+        @apply before:i-mingcute-snow-line my-0.5 before:mr-1 before:relative before:top-[-0.02em] before:text-secondary before:text-sm  
+    }
+</style>
+</Layout>

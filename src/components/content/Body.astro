@@ -1,0 +1,77 @@
+---
+import ContentHero from './Hero.astro'
+import ContentTags from './Tags.astro'
+
+
+---
+<div class="md:max-w-4xl
+            bg-white
+            shadow-sm
+            rounded
+            md:p-8
+            p-4"
+>
+    <ContentHero 
+        title="aaaaaa"
+        imgSrc='/img/83603397_p0.png'
+    />
+
+    <div class="prose-header mt-4 mb-12">
+        <h1 class="text-3xl font-semibold mt-2">らみらみしてきた</h1>
+        <div class="flex items-stretch mt-2">
+            <p class="before:i-ri-history-line before:relative before:top-0.5 before:mr-1 
+                    text-slate-600 mr-2">2024-01-01</p>
+            <p class="before:i-ri-edit-line before:relative before:top-0.5 before:mr-1 
+                    text-slate-600">2023-01-01</p>
+        </div>
+    </div>
+    <article class="prose prose-gray lg:prose-lg max-w-none mt-8">
+        <h2>概要</h2>
+        <p><ruby>雪花<rt>ゆきはな</rt></ruby>ラミィは、日本のバーチャルYouTuber、所属事務所はホロライブプロダクション。
+            <br>
+            ホロライブ5期生（ねぽらぼ）としてデビューし活動している。主な活動内容はゲーム実況以外に雑談、晩酌配信・ASMRなど。</p>
+        <h3>プロフィール</h3>
+        <ul>
+            <li><strong>名前: 雪花ラミィ</strong></li>
+            <li>所属: ホロライブプロダクション（5期生）</li>
+            <li>誕生日: 1810年11月15日</li>
+            <li>デビュー日: 2020年8月12日</li>
+            <li>活動内容:<ul>
+                <li>雑談・晩酌配信</li>
+                <li>ASMR配信</li>
+                <li>ゲーム実況</li>
+                <li>歌ってみた動画</li>
+            
+            </ul></li>
+            <li>YouTube: <a href="https://www.youtube.com/channel/UCFKOVgVbGmX65RxO3EtH3iw" target="_blank">Lamy Ch. 雪花ラミィ</a></li>
+            <li>Twitter: <a href="https://twitter.com/yukihanalamy" target="_blank">@yukihanalamy</a></li>
+        </ul>
+
+        
+    </article>
+</div>
+
+<style>
+    .prose h2 {
+        @apply border-b border-slate-300 mb-5 pb-1
+    }
+    .prose h3 {
+        @apply border-l-4 border-accent mb-3 pl-3
+    }
+    
+    .prose a {
+        @apply text-accent
+    }
+
+    .prose ul > li {
+        @apply before:i-mingcute-snow-line before:mr-1 my-0.5 before:relative before:top-0.5 before:text-primary list-none 
+    }
+
+    .prose ul > li > ul {
+        @apply my-2
+    }
+
+    .prose ul > li > ul > li{
+        @apply before:i-mingcute-snow-line my-0.5 before:mr-1 before:relative before:top-[-0.02em] before:text-secondary before:text-sm  
+    }
+</style>

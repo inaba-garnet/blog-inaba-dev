@@ -1,0 +1,85 @@
+---
+import { getCollection, getEntry } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import ContentHero from "../../components/content/Hero.astro";
+import SideToc from "../../components/content/SideToc.astro";
+
+// 1. コレクションエントリーごとに新しいパスを生成
+export async function getStaticPaths() {
+	const blogEntries = await getCollection("posts");
+	return blogEntries.map((entry) => ({
+		params: { slug: entry.slug },
+		props: { entry },
+	}));
+}
+// 2. テンプレートでは、プロパティからエントリーを直接取得できる
+const { entry } = Astro.props;
+const { Content,headings } = await entry.render();
+
+---
+
+<Layout title={entry.data.title}>
+	<div class="lg:grid lg:grid-cols-12">
+		<div
+			class="lg:max-w-4xl
+                bg-white
+                shadow-sm
+                rounded-lg
+                lg:p-8
+                lg:	col-span-8
+                p-4
+				m-2"
+		>
+			<ContentHero title="aaaaaa" imgSrc="/img/83603397_p0.png" />
+
+			<div class="prose-header mt-4 mb-12">
+				<h1 class="text-3xl font-semibold mt-2">{entry.data.title}</h1>
+				<div class="flex items-stretch mt-2">
+					<p
+						class="before:i-ri-history-line before:relative before:top-0.5 before:mr-1
+                        text-slate-600 mr-2"
+					>
+						{entry.data.updated_at}
+					</p>
+					<p
+						class="before:i-ri-edit-line before:relative before:top-0.5 before:mr-1
+                        text-slate-600"
+					>
+						{entry.data.created_at}
+					</p>
+				</div>
+			</div>
+
+			<article class="prose prose-gray lg:prose-lg max-w-none mt-8" id="scrollspy-article">
+				{/* mdx content */}
+				<Content />
+			</article>
+		</div>
+        <SideToc headings={headings} entry={entry}/>
+	</div>
+	
+	<style is:global>
+		.prose h2 {
+			@apply border-b border-slate-300 mb-5 pb-1;
+		}
+		.prose h3 {
+			@apply border-l-4 border-accent mb-3 pl-3;
+		}
+
+		.prose a {
+			@apply text-accent;
+		}
+
+		.prose ul > li {
+			@apply before:i-mingcute-snow-line before:mr-1 my-0.5 before:relative before:top-0.5 before:text-primary list-none;
+		}
+
+		.prose ul > li > ul {
+			@apply my-2;
+		}
+
+		.prose ul > li > ul > li {
+			@apply before:i-mingcute-snow-line my-0.5 before:mr-1 before:relative before:top-[-0.02em] before:text-secondary before:text-sm;
+		}
+	</style>
+</Layout>
