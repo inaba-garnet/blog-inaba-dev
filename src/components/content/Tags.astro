@@ -6,15 +6,12 @@ interface Props {
 const { tags } = Astro.props
 ---
 <div class="mt-2" >
-    <a href="#" class="py-1 px-2 text-sm font-medium rounded-md 
+    {tags.map(tag=>(
+        <a href={`/tags/${encodeURI(tag)}/1`} class="py-1 px-2 text-sm font-medium rounded-md 
                                 border border-primary 
                                 bg-bg hover:bg-secondary text-slate-500 mr-2">
-        #ホロライブ
-    </a>
-    <a href="#" class="py-1 px-2 text-sm font-medium rounded-md 
-                                border border-primary 
-                                bg-bg hover:bg-secondary text-slate-600">
-        #雪花ラミィ
-    </a>
+            {tag}
+        </a>
+    ))}
 </div>
 

@@ -53,8 +53,6 @@ headings.forEach(heading=>{
 if (scrollSpyHeading.length > 0)
     scrollSpyHeading[0].active = true
 
-
-console.log(scrollSpyHeading)
 ---
 <div class="col-span-4 max-sm:hidden">
     <div class="sticky top-4 p-4 bg-slate-50 rounded-lg mx-6 mt-2">
@@ -88,12 +86,12 @@ console.log(scrollSpyHeading)
                         <LineIcon round size={36}/>
                     </LineShareButton>
             </div>
-            <hr class="border-1 border-secondary my-2"/>
         </div>
         {
             () => {
                 if(scrollSpyHeading.length !== 0){
                     return (
+                    <hr class="border-1 border-secondary my-2"/>
                     <div class="p-2">
                         <p class="text-lg font-medium text-gray-500">目次</p>
 
@@ -146,7 +144,3 @@ console.log(scrollSpyHeading)
         
     
 </div>
-
-<script>
-    import '@preline/scrollspy';
-</script>
